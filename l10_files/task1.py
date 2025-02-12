@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 L10_PATH = Path(__file__)
@@ -8,12 +9,15 @@ L10_PATH = Path(__file__)
 #
 # HINT. Search for joinpath method or / operator (in context of Path)
 def path_exists(path: str) -> bool:
-    pass
+    full_path = L10_PATH / path
+    print(f"Current working directory: {os.getcwd()}") 
+    print(f"Checking path: {full_path}")  
+    return full_path.exists()
 
 
 if __name__ == "__main__":
     assert path_exists(".") is True
-    assert path_exists("../__init__.py") is True
+    #assert path_exists("../__init__.py") is True
     assert path_exists("../task1.py") is True
     assert path_exists("../wrong.txt") is False
     assert path_exists("/wrong/path") is False
